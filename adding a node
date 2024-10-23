@@ -1,0 +1,46 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    // Method to insert a new node at the end of the list
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) { // If the list is empty
+            head = newNode;
+            return;
+        }
+        Node last = head;
+        while (last.next != null) { // Traverse to the end of the list
+            last = last.next;
+        }
+        last.next = newNode; // Insert the new node at the end
+    }
+
+    // Method to display the linked list
+    public void display() {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.insert(10);
+        linkedList.insert(20);
+        linkedList.insert(30);
+        
+        linkedList.display(); // Output: 10 -> 20 -> 30 -> null
+    }
+}
